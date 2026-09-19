@@ -1,0 +1,627 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Add Asset | IT Asset Management System</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background: #f4f7fb;
+        color: #1e293b;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 250px;
+        height: 100vh;
+        background: #111827;
+        color: white;
+        padding: 25px 15px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0 12px 30px;
+        border-bottom: 1px solid #374151;
+    }
+
+    .logo-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        background: #2563eb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+    }
+
+    .logo h2 {
+        font-size: 17px;
+    }
+
+    .logo span {
+        display: block;
+        color: #9ca3af;
+        font-size: 11px;
+        margin-top: 3px;
+    }
+
+    .menu {
+        margin-top: 25px;
+    }
+
+    .menu-title {
+        color: #6b7280;
+        font-size: 11px;
+        text-transform: uppercase;
+        margin: 0 12px 10px;
+        letter-spacing: 1px;
+    }
+
+    .menu a {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        color: #cbd5e1;
+        text-decoration: none;
+        padding: 13px 12px;
+        margin-bottom: 5px;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    .menu a:hover,
+    .menu a.active {
+        background: #2563eb;
+        color: white;
+    }
+
+    .menu-icon {
+        width: 20px;
+        text-align: center;
+    }
+
+    .main {
+        margin-left: 250px;
+        min-height: 100vh;
+    }
+
+    .topbar {
+        height: 75px;
+        background: white;
+        border-bottom: 1px solid #e5e7eb;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 30px;
+    }
+
+    .topbar h1 {
+        font-size: 21px;
+        color: #111827;
+    }
+
+    .topbar p {
+        color: #64748b;
+        font-size: 13px;
+        margin-top: 4px;
+    }
+
+    .profile {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .profile-avatar {
+        width: 40px;
+        height: 40px;
+        background: #dbeafe;
+        color: #1d4ed8;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+
+    .content {
+        padding: 30px;
+        max-width: 1000px;
+    }
+
+    .page-header {
+        margin-bottom: 25px;
+    }
+
+    .page-header h2 {
+        font-size: 24px;
+        color: #111827;
+    }
+
+    .page-header p {
+        color: #64748b;
+        margin-top: 6px;
+        font-size: 13px;
+    }
+
+    .form-panel {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 25px;
+    }
+
+    .form-title {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group.full {
+        grid-column: 1 / -1;
+    }
+
+    label {
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 7px;
+        color: #334155;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: 11px 12px;
+        border: 1px solid #dbe1e8;
+        border-radius: 7px;
+        outline: none;
+        font-size: 13px;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: #2563eb;
+    }
+
+    textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    .form-actions {
+        margin-top: 25px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 11px 20px;
+        border-radius: 7px;
+        border: none;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .cancel {
+        background: #e5e7eb;
+        color: #374151;
+    }
+
+    .save {
+        background: #2563eb;
+        color: white;
+    }
+
+    .save:hover {
+        background: #1d4ed8;
+    }
+
+    footer {
+        text-align: center;
+        padding: 25px;
+        color: #94a3b8;
+        font-size: 11px;
+    }
+
+    @media (max-width: 750px) {
+        .sidebar {
+            width: 70px;
+            padding: 20px 8px;
+        }
+
+        .logo h2,
+        .logo span,
+        .menu-title,
+        .menu a span {
+            display: none;
+        }
+
+        .logo {
+            justify-content: center;
+            padding: 0 0 20px;
+        }
+
+        .menu a {
+            justify-content: center;
+        }
+
+        .main {
+            margin-left: 70px;
+        }
+
+        .topbar {
+            padding: 0 15px;
+        }
+
+        .content {
+            padding: 18px;
+        }
+    }
+
+    @media (max-width: 550px) {
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group.full {
+            grid-column: auto;
+        }
+    }
+</style>
+
+</head><body><aside class="sidebar">
+
+    <div class="logo">
+        <div class="logo-icon">IT</div>
+
+        <div>
+            <h2>IT Asset Manager</h2>
+            <span>Administration System</span>
+        </div>
+    </div>
+
+    <nav class="menu">
+
+        <div class="menu-title">Main Menu</div>
+
+        <a href="index.html">
+            <div class="menu-icon">▣</div>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="assets.html" class="active">
+            <div class="menu-icon">▤</div>
+            <span>Assets</span>
+        </a>
+
+        <a href="#">
+            <div class="menu-icon">♙</div>
+            <span>Employees</span>
+        </a>
+
+        <a href="#">
+            <div class="menu-icon"></div>
+            <span>Assignments</span>
+        </a>
+
+        <a href="#">
+            <div class="menu-icon"></div>
+            <span>Maintenance</span>
+        </a>
+
+        <div class="menu-title" style="margin-top:25px;">
+            Management
+        </div>
+
+        <a href="#">
+            <div class="menu-icon">▥</div>
+            <span>Reports</span>
+        </a>
+
+        <a href="#">
+            <div class="menu-icon"></div>
+            <span>Settings</span>
+        </a>
+
+    </nav>
+
+</aside>
+
+
+<main class="main">
+
+    <header class="topbar">
+
+        <div>
+            <h1>IT Administration Dashboard</h1>
+            <p>Asset management and equipment tracking</p>
+        </div>
+
+        <div class="profile">
+
+            <div class="profile-avatar">
+                GT
+            </div>
+
+            <div>
+                <strong>IT Administrator</strong>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <section class="content">
+
+        <div class="page-header">
+            <h2>Add New Asset</h2>
+            <p>Register a new company IT asset.</p>
+        </div>
+
+
+        <div class="form-panel">
+
+            <h3 class="form-title">Asset Information</h3>
+
+            <form id="assetForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Asset ID *</label>
+                        <input
+                            type="text"
+                            id="assetId"
+                            placeholder="Example: PC-001"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Equipment Name *</label>
+                        <input
+                            type="text"
+                            id="equipment"
+                            placeholder="Example: Dell OptiPlex Desktop"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Category *</label>
+
+                        <select id="category" required>
+                            <option value="">Select category</option>
+                            <option>Computer</option>
+                            <option>Laptop</option>
+                            <option>Printer</option>
+                            <option>Network Equipment</option>
+                            <option>CCTV</option>
+                            <option>Server</option>
+                            <option>UPS</option>
+                            <option>Other</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Serial Number *</label>
+
+                        <input
+                            type="text"
+                            id="serialNumber"
+                            placeholder="Example: DL78452A"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Department *</label>
+
+                        <select id="department" required>
+
+                            <option value="">
+                                Select department
+                            </option>
+
+                            <option>IT</option>
+                            <option>Finance</option>
+                            <option>HR</option>
+                            <option>Production</option>
+                            <option>Purchasing</option>
+                            <option>Quality</option>
+                            <option>Management</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Status *</label>
+
+                        <select id="status" required>
+
+                            <option value="">
+                                Select status
+                            </option>
+
+                            <option>Available</option>
+                            <option>In Use</option>
+                            <option>Repair</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Location</label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            placeholder="Example: Head Office / Factory"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Purchase Date</label>
+
+                        <input
+                            type="date"
+                            id="purchaseDate"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>Notes</label>
+
+                        <textarea
+                            id="notes"
+                            placeholder="Additional information about this asset..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="btn cancel"
+                        onclick="window.location.href='assets.html'"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn save"
+                    >
+                        Save Asset
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        IT Asset Management System © 2026 | Developed by Getahun Tegene
+    </footer>
+
+</main>
+
+
+<script>
+
+    document
+        .getElementById("assetForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const asset = {
+
+                assetId:
+                    document.getElementById("assetId").value,
+
+                equipment:
+                    document.getElementById("equipment").value,
+
+                category:
+                    document.getElementById("category").value,
+
+                serialNumber:
+                    document.getElementById("serialNumber").value,
+
+                department:
+                    document.getElementById("department").value,
+
+                status:
+                    document.getElementById("status").value,
+
+                location:
+                    document.getElementById("location").value,
+
+                purchaseDate:
+                    document.getElementById("purchaseDate").value,
+
+                notes:
+                    document.getElementById("notes").value
+
+            };
+
+
+            let assets =
+                JSON.parse(localStorage.getItem("assets")) || [];
+
+
+            assets.push(asset);
+
+
+            localStorage.setItem(
+                "assets",
+                JSON.stringify(assets)
+            );
+
+
+            alert("Asset saved successfully!");
+
+
+            window.location.href = "assets.html";
+
+        });
+
+</script>
+
+</body>
+</html>
