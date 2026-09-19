@@ -26,6 +26,7 @@
         background: #111827;
         color: white;
         padding: 25px 15px;
+        z-index: 1000;
     }
 
     .logo {
@@ -81,6 +82,7 @@
         margin-bottom: 5px;
         border-radius: 8px;
         font-size: 14px;
+        transition: 0.2s;
     }
 
     .menu a:hover,
@@ -100,7 +102,7 @@
         min-height: 100vh;
     }
 
-    /* TOPBAR */
+    /* TOP BAR */
     .topbar {
         height: 75px;
         background: white;
@@ -173,6 +175,7 @@
         font-size: 13px;
     }
 
+    /* ADD BUTTON */
     .add-button {
         border: none;
         background: #2563eb;
@@ -182,13 +185,15 @@
         cursor: pointer;
         font-size: 13px;
         font-weight: bold;
+        transition: 0.2s;
     }
 
     .add-button:hover {
         background: #1d4ed8;
+        transform: translateY(-1px);
     }
 
-    /* FILTER BAR */
+    /* FILTER PANEL */
     .filter-panel {
         background: white;
         border: 1px solid #e5e7eb;
@@ -211,6 +216,7 @@
         border-radius: 7px;
         outline: none;
         font-size: 13px;
+        background: white;
     }
 
     input:focus,
@@ -218,7 +224,7 @@
         border-color: #2563eb;
     }
 
-    /* TABLE */
+    /* TABLE PANEL */
     .panel {
         background: white;
         border: 1px solid #e5e7eb;
@@ -271,6 +277,7 @@
         color: #2563eb;
     }
 
+    /* STATUS */
     .status {
         display: inline-block;
         padding: 5px 10px;
@@ -294,6 +301,7 @@
         color: #c2410c;
     }
 
+    /* ACTION BUTTONS */
     .action-btn {
         border: none;
         background: transparent;
@@ -310,6 +318,10 @@
         color: #dc2626;
     }
 
+    .action-btn:hover {
+        transform: scale(1.15);
+    }
+
     /* FOOTER */
     footer {
         text-align: center;
@@ -320,12 +332,15 @@
 
     /* RESPONSIVE */
     @media (max-width: 1100px) {
+
         .filters {
             grid-template-columns: 1fr 1fr;
         }
+
     }
 
     @media (max-width: 750px) {
+
         .sidebar {
             width: 70px;
             padding: 20px 8px;
@@ -351,88 +366,170 @@
             margin-left: 70px;
         }
 
-        .profile-info {
-            display: none;
-        }
-
         .topbar {
             padding: 0 15px;
+        }
+
+        .profile-info {
+            display: none;
         }
 
         .content {
             padding: 18px;
         }
 
-        .page-header {
-            align-items: flex-start;
-            gap: 15px;
-        }
     }
 
     @media (max-width: 550px) {
+
         .filters {
             grid-template-columns: 1fr;
         }
 
         .page-header {
             flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
         }
+
     }
 </style>
 
 </head><body><!-- SIDEBAR -->
+
 <aside class="sidebar">
 
     <div class="logo">
-        <div class="logo-icon">IT</div>
+
+        <div class="logo-icon">
+            IT
+        </div>
 
         <div>
             <h2>IT Asset Manager</h2>
             <span>Administration System</span>
         </div>
+
     </div>
+
 
     <nav class="menu">
 
-        <div class="menu-title">Main Menu</div>
+        <div class="menu-title">
+            Main Menu
+        </div>
+
+
+        <!-- DASHBOARD -->
 
         <a href="index.html">
-            <div class="menu-icon">▣</div>
-            <span>Dashboard</span>
+
+            <div class="menu-icon">
+                ▣
+            </div>
+
+            <span>
+                Dashboard
+            </span>
+
         </a>
+
+
+        <!-- ASSETS -->
 
         <a href="assets.html" class="active">
-            <div class="menu-icon">▤</div>
-            <span>Assets</span>
+
+            <div class="menu-icon">
+                ▤
+            </div>
+
+            <span>
+                Assets
+            </span>
+
         </a>
+
+
+        <!-- EMPLOYEES -->
 
         <a href="#">
-            <div class="menu-icon">♙</div>
-            <span>Employees</span>
+
+            <div class="menu-icon">
+                ♙
+            </div>
+
+            <span>
+                Employees
+            </span>
+
         </a>
+
+
+        <!-- ASSIGNMENTS -->
 
         <a href="#">
-            <div class="menu-icon"></div>
-            <span>Assignments</span>
+
+            <div class="menu-icon">
+                
+            </div>
+
+            <span>
+                Assignments
+            </span>
+
         </a>
+
+
+        <!-- MAINTENANCE -->
 
         <a href="#">
-            <div class="menu-icon"></div>
-            <span>Maintenance</span>
+
+            <div class="menu-icon">
+                
+            </div>
+
+            <span>
+                Maintenance
+            </span>
+
         </a>
 
-        <div class="menu-title" style="margin-top:25px;">
+
+        <div
+            class="menu-title"
+            style="margin-top:25px;"
+        >
             Management
         </div>
 
-        <a href="#">
-            <div class="menu-icon">▥</div>
-            <span>Reports</span>
-        </a>
+
+        <!-- REPORTS -->
 
         <a href="#">
-            <div class="menu-icon"></div>
-            <span>Settings</span>
+
+            <div class="menu-icon">
+                ▥
+            </div>
+
+            <span>
+                Reports
+            </span>
+
+        </a>
+
+
+        <!-- SETTINGS -->
+
+        <a href="#">
+
+            <div class="menu-icon">
+                
+            </div>
+
+            <span>
+                Settings
+            </span>
+
         </a>
 
     </nav>
@@ -441,15 +538,26 @@
 
 
 <!-- MAIN -->
+
 <main class="main">
 
+
     <!-- TOPBAR -->
+
     <header class="topbar">
 
         <div>
-            <h1>IT Administration Dashboard</h1>
-            <p>Asset management and equipment tracking</p>
+
+            <h1>
+                IT Administration Dashboard
+            </h1>
+
+            <p>
+                Asset management and equipment tracking
+            </p>
+
         </div>
+
 
         <div class="profile">
 
@@ -458,8 +566,15 @@
             </div>
 
             <div class="profile-info">
-                <strong>IT Administrator</strong>
-                <span>System Administrator</span>
+
+                <strong>
+                    IT Administrator
+                </strong>
+
+                <span>
+                    System Administrator
+                </span>
+
             </div>
 
         </div>
@@ -468,16 +583,33 @@
 
 
     <!-- CONTENT -->
+
     <section class="content">
+
+
+        <!-- PAGE HEADER -->
 
         <div class="page-header">
 
             <div>
-                <h2>IT Assets</h2>
-                <p>Manage and track all company IT equipment.</p>
+
+                <h2>
+                    IT Assets
+                </h2>
+
+                <p>
+                    Manage and track all company IT equipment.
+                </p>
+
             </div>
 
-            <button class="add-button">
+
+            <!-- IMPORTANT: ADD ASSET BUTTON -->
+
+            <button
+                class="add-button"
+                onclick="window.location.href='add-asset.html'"
+            >
                 + Add New Asset
             </button>
 
@@ -485,39 +617,115 @@
 
 
         <!-- FILTERS -->
+
         <div class="filter-panel">
 
             <div class="filters">
 
+
                 <input
                     type="text"
+                    id="searchInput"
                     placeholder="Search asset ID, serial number or equipment..."
                 >
 
-                <select>
-                    <option value="">All Categories</option>
-                    <option>Computer</option>
-                    <option>Laptop</option>
-                    <option>Printer</option>
-                    <option>Network Equipment</option>
-                    <option>CCTV</option>
-                    <option>Other</option>
+
+                <select id="categoryFilter">
+
+                    <option value="">
+                        All Categories
+                    </option>
+
+                    <option>
+                        Computer
+                    </option>
+
+                    <option>
+                        Laptop
+                    </option>
+
+                    <option>
+                        Printer
+                    </option>
+
+                    <option>
+                        Network Equipment
+                    </option>
+
+                    <option>
+                        CCTV
+                    </option>
+
+                    <option>
+                        Server
+                    </option>
+
+                    <option>
+                        UPS
+                    </option>
+
+                    <option>
+                        Other
+                    </option>
+
                 </select>
 
-                <select>
-                    <option value="">All Status</option>
-                    <option>In Use</option>
-                    <option>Available</option>
-                    <option>Repair</option>
+
+                <select id="statusFilter">
+
+                    <option value="">
+                        All Status
+                    </option>
+
+                    <option>
+                        In Use
+                    </option>
+
+                    <option>
+                        Available
+                    </option>
+
+                    <option>
+                        Repair
+                    </option>
+
                 </select>
 
-                <select>
-                    <option value="">All Departments</option>
-                    <option>IT</option>
-                    <option>Finance</option>
-                    <option>HR</option>
-                    <option>Production</option>
-                    <option>Purchasing</option>
+
+                <select id="departmentFilter">
+
+                    <option value="">
+                        All Departments
+                    </option>
+
+                    <option>
+                        IT
+                    </option>
+
+                    <option>
+                        Finance
+                    </option>
+
+                    <option>
+                        HR
+                    </option>
+
+                    <option>
+                        Production
+                    </option>
+
+                    <option>
+                        Purchasing
+                    </option>
+
+                    <option>
+                        Quality
+                    </option>
+
+                    <option>
+                        Management
+                    </option>
+
                 </select>
 
             </div>
@@ -526,14 +734,20 @@
 
 
         <!-- ASSET TABLE -->
+
         <div class="panel">
 
             <div class="panel-header">
 
-                <h3>Asset Inventory</h3>
+                <h3>
+                    Asset Inventory
+                </h3>
 
-                <span class="asset-count">
-                    426 Assets
+                <span
+                    class="asset-count"
+                    id="assetCount"
+                >
+                    5 Assets
                 </span>
 
             </div>
@@ -546,118 +760,307 @@
                     <thead>
 
                         <tr>
-                            <th>Asset ID</th>
-                            <th>Equipment</th>
-                            <th>Category</th>
-                            <th>Serial Number</th>
-                            <th>Department</th>
-                            <th>Status</th>
-                            <th>Action</th>
+
+                            <th>
+                                Asset ID
+                            </th>
+
+                            <th>
+                                Equipment
+                            </th>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                Serial Number
+                            </th>
+
+                            <th>
+                                Department
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
                         </tr>
 
                     </thead>
 
 
-                    <tbody>
+                    <tbody id="assetTableBody">
+
+
+                        <!-- SAMPLE ASSET 1 -->
 
                         <tr>
-                            <td class="asset-id">PC-001</td>
-                            <td>Dell OptiPlex Desktop</td>
-                            <td>Computer</td>
-                            <td>DL78452A</td>
-                            <td>Finance</td>
+
+                            <td class="asset-id">
+                                PC-001
+                            </td>
 
                             <td>
+                                Dell OptiPlex Desktop
+                            </td>
+
+                            <td>
+                                Computer
+                            </td>
+
+                            <td>
+                                DL78452A
+                            </td>
+
+                            <td>
+                                Finance
+                            </td>
+
+                            <td>
+
                                 <span class="status status-use">
                                     In Use
                                 </span>
+
                             </td>
 
                             <td>
-                                <button class="action-btn edit"></button>
-                                <button class="action-btn delete"></button>
+
+                                <button
+                                    class="action-btn edit"
+                                    title="Edit"
+                                >
+                                    
+                                </button>
+
+                                <button
+                                    class="action-btn delete"
+                                    title="Delete"
+                                >
+                                    
+                                </button>
+
                             </td>
+
                         </tr>
 
 
+                        <!-- SAMPLE ASSET 2 -->
+
                         <tr>
-                            <td class="asset-id">LT-014</td>
-                            <td>Dell Latitude Laptop</td>
-                            <td>Laptop</td>
-                            <td>DL98542B</td>
-                            <td>HR</td>
+
+                            <td class="asset-id">
+                                LT-014
+                            </td>
 
                             <td>
+                                Dell Latitude Laptop
+                            </td>
+
+                            <td>
+                                Laptop
+                            </td>
+
+                            <td>
+                                DL98542B
+                            </td>
+
+                            <td>
+                                HR
+                            </td>
+
+                            <td>
+
                                 <span class="status status-use">
                                     In Use
                                 </span>
+
                             </td>
 
                             <td>
-                                <button class="action-btn edit"></button>
-                                <button class="action-btn delete"></button>
+
+                                <button
+                                    class="action-btn edit"
+                                    title="Edit"
+                                >
+                                    
+                                </button>
+
+                                <button
+                                    class="action-btn delete"
+                                    title="Delete"
+                                >
+                                    
+                                </button>
+
                             </td>
+
                         </tr>
 
 
+                        <!-- SAMPLE ASSET 3 -->
+
                         <tr>
-                            <td class="asset-id">PR-025</td>
-                            <td>HP Laser Printer</td>
-                            <td>Printer</td>
-                            <td>HP78421P</td>
-                            <td>IT</td>
+
+                            <td class="asset-id">
+                                PR-025
+                            </td>
 
                             <td>
+                                HP Laser Printer
+                            </td>
+
+                            <td>
+                                Printer
+                            </td>
+
+                            <td>
+                                HP78421P
+                            </td>
+
+                            <td>
+                                IT
+                            </td>
+
+                            <td>
+
                                 <span class="status status-available">
                                     Available
                                 </span>
+
                             </td>
 
                             <td>
-                                <button class="action-btn edit"></button>
-                                <button class="action-btn delete"></button>
+
+                                <button
+                                    class="action-btn edit"
+                                    title="Edit"
+                                >
+                                    
+                                </button>
+
+                                <button
+                                    class="action-btn delete"
+                                    title="Delete"
+                                >
+                                    
+                                </button>
+
                             </td>
+
                         </tr>
 
 
+                        <!-- SAMPLE ASSET 4 -->
+
                         <tr>
-                            <td class="asset-id">SW-008</td>
-                            <td>Network Switch</td>
-                            <td>Network</td>
-                            <td>SW784521</td>
-                            <td>IT</td>
+
+                            <td class="asset-id">
+                                SW-008
+                            </td>
 
                             <td>
+                                Network Switch
+                            </td>
+
+                            <td>
+                                Network Equipment
+                            </td>
+
+                            <td>
+                                SW784521
+                            </td>
+
+                            <td>
+                                IT
+                            </td>
+
+                            <td>
+
                                 <span class="status status-use">
                                     In Use
                                 </span>
+
                             </td>
 
                             <td>
-                                <button class="action-btn edit"></button>
-                                <button class="action-btn delete"></button>
+
+                                <button
+                                    class="action-btn edit"
+                                    title="Edit"
+                                >
+                                    
+                                </button>
+
+                                <button
+                                    class="action-btn delete"
+                                    title="Delete"
+                                >
+                                    
+                                </button>
+
                             </td>
+
                         </tr>
 
 
+                        <!-- SAMPLE ASSET 5 -->
+
                         <tr>
-                            <td class="asset-id">PC-034</td>
-                            <td>Desktop Computer</td>
-                            <td>Computer</td>
-                            <td>PC457821</td>
-                            <td>Production</td>
+
+                            <td class="asset-id">
+                                PC-034
+                            </td>
 
                             <td>
+                                Desktop Computer
+                            </td>
+
+                            <td>
+                                Computer
+                            </td>
+
+                            <td>
+                                PC457821
+                            </td>
+
+                            <td>
+                                Production
+                            </td>
+
+                            <td>
+
                                 <span class="status status-repair">
                                     Repair
                                 </span>
+
                             </td>
 
                             <td>
-                                <button class="action-btn edit"></button>
-                                <button class="action-btn delete"></button>
+
+                                <button
+                                    class="action-btn edit"
+                                    title="Edit"
+                                >
+                                    
+                                </button>
+
+                                <button
+                                    class="action-btn delete"
+                                    title="Delete"
+                                >
+                                    
+                                </button>
+
                             </td>
+
                         </tr>
+
 
                     </tbody>
 
@@ -671,10 +1074,131 @@
 
 
     <footer>
-        IT Asset Management System © 2026 | Developed by Getahun Tegene
+
+        IT Asset Management System © 2026 |
+        Developed by Getahun Tegene
+
     </footer>
 
 </main>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+    const searchInput =
+        document.getElementById("searchInput");
+
+    const categoryFilter =
+        document.getElementById("categoryFilter");
+
+    const statusFilter =
+        document.getElementById("statusFilter");
+
+    const departmentFilter =
+        document.getElementById("departmentFilter");
+
+
+    function filterAssets() {
+
+        const search =
+            searchInput.value.toLowerCase();
+
+        const category =
+            categoryFilter.value.toLowerCase();
+
+        const status =
+            statusFilter.value.toLowerCase();
+
+        const department =
+            departmentFilter.value.toLowerCase();
+
+
+        const rows =
+            document.querySelectorAll(
+                "#assetTableBody tr"
+            );
+
+
+        let visibleCount = 0;
+
+
+        rows.forEach(function(row) {
+
+            const text =
+                row.textContent.toLowerCase();
+
+
+            const matchesSearch =
+                text.includes(search);
+
+
+            const matchesCategory =
+                !category ||
+                text.includes(category);
+
+
+            const matchesStatus =
+                !status ||
+                text.includes(status);
+
+
+            const matchesDepartment =
+                !department ||
+                text.includes(department);
+
+
+            if (
+                matchesSearch &&
+                matchesCategory &&
+                matchesStatus &&
+                matchesDepartment
+            ) {
+
+                row.style.display = "";
+
+                visibleCount++;
+
+            } else {
+
+                row.style.display = "none";
+
+            }
+
+        });
+
+
+        document.getElementById("assetCount").textContent =
+            visibleCount + " Assets";
+
+    }
+
+
+    searchInput.addEventListener(
+        "input",
+        filterAssets
+    );
+
+
+    categoryFilter.addEventListener(
+        "change",
+        filterAssets
+    );
+
+
+    statusFilter.addEventListener(
+        "change",
+        filterAssets
+    );
+
+
+    departmentFilter.addEventListener(
+        "change",
+        filterAssets
+    );
+
+</script>
 
 </body>
 </html>
